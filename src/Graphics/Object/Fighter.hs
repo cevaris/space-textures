@@ -1,8 +1,8 @@
-module Fighter (drawFighter) where 
+module Graphics.Object.Fighter (drawFighter) where 
  
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
   
 
 

@@ -1,11 +1,11 @@
-module Star (drawStar) where 
+module Graphics.Object.Star (drawStar) where 
  
 import Graphics.UI.GLUT
 import Graphics.UI.GLUT.Objects
 
-import GLUtils
+import Graphics.Util.GLUtils
 
-import Sphere
+import Graphics.Object.Sphere
 
 -- Draw solid pyramid
 --  scale (s)

@@ -1,4 +1,4 @@
-module StarCluster (drawStarCluster) where 
+module Graphics.Object.StarCluster (drawStarCluster) where 
 
 import System.Random
 import Control.Applicative
@@ -8,8 +8,8 @@ import Control.Applicative
 import Graphics.UI.GLUT
 import Graphics.UI.GLUT.Objects
 
-import Sphere
-import GLUtils
+import Graphics.Object.Sphere
+import Graphics.Util.GLUtils
 
 clusterPoints :: (RandomGen a, RandomGen b, RandomGen c) => Int -> a -> b -> c-> [(Float,Float,Float)]
 clusterPoints n a b c = zip3 (take n (randomRs ((-1),1) a)) (take n (randomRs ((-1),1) b)) (take n (randomRs ((-1),1) c))

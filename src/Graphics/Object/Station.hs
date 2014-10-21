@@ -1,11 +1,11 @@
-module Station (drawStation) where 
+module Graphics.Object.Station (drawStation) where 
  
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
 
-import Cube
-import Pyramid
+import Graphics.Object.Cube
+import Graphics.Object.Pyramid
   
 drawStation :: State ->
                GLfloat ->

@@ -10,9 +10,10 @@ extra-source-files:  readme.md
 
 executable SpaceTexture
     hs-source-dirs:  src
-                     src/objects
-                     src/scene
-                     src/utils
+                     src/Graphics/Object
+                     src/Graphics/Util
+                     src/Graphics/Scene
+                     src/Binding/
     main-is:         SpaceTexture.hs
     build-depends:   base,
                      GLUT,

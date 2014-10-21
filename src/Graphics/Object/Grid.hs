@@ -1,8 +1,8 @@
-module Grid (drawGrid) where 
+module Graphics.Object.Grid (drawGrid) where 
  
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
 
 
 ----------------------------------------------------------------------------------------------------------------

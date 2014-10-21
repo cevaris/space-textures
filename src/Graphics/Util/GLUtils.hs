@@ -1,4 +1,4 @@
-module GLUtils where
+module Graphics.Util.GLUtils where
 import Data.IORef ( IORef, newIORef )
 
 import Numeric

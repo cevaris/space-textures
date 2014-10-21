@@ -1,8 +1,8 @@
-module Pyramid (drawPyramid) where 
+module Graphics.Object.Pyramid (drawPyramid) where 
  
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
 
 -- Draw solid pyramid
 ----  scale (s)

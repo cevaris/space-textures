@@ -4,7 +4,7 @@ import System.Exit ( exitWith, ExitCode(ExitSuccess), exitFailure )
 
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
 
 ----------------------------------------------------------------------------------------------------------------
 -- Key Binding

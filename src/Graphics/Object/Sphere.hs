@@ -1,9 +1,9 @@
-module Sphere (drawSphere) where 
+module Graphics.Object.Sphere (drawSphere) where 
  
 import Graphics.UI.GLUT
 import Data.Fixed
 
-import GLUtils
+import Graphics.Util.GLUtils
 
 spherePh:: Float -> [Float]
 spherePh d = [ ph | ph <- [(-90.0)..90.0], ((mod' ph d) == 0 && ph < 90)]

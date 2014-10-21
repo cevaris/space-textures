@@ -5,15 +5,15 @@ import Graphics.UI.GLUT
 
 
 import Binding.Input
-import GLUtils
-import Cube
-import Star
-import Grid
-import StarCluster
-import Fighter
-import Pyramid
-import Station
-import Sphere
+import Graphics.Util.GLUtils
+import Graphics.Object.Cube
+import Graphics.Object.Star
+import Graphics.Object.Grid
+import Graphics.Object.StarCluster
+import Graphics.Object.Fighter
+import Graphics.Object.Pyramid
+import Graphics.Object.Station
+import Graphics.Object.Sphere
 
 
 ----------------------------------------------------------------------------------------------------------------

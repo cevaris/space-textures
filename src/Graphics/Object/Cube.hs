@@ -1,8 +1,8 @@
-module Cube (drawCube) where 
+module Graphics.Object.Cube (drawCube) where 
  
 import Graphics.UI.GLUT
 
-import GLUtils
+import Graphics.Util.GLUtils
 
 
 --drawCube :: Float -> (Float, Float, Float) -> IO ()
