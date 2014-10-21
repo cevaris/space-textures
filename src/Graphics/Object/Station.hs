@@ -6,6 +6,7 @@ import Graphics.Util.GLUtils
 
 import Graphics.Object.Cube
 import Graphics.Object.Pyramid
+import Data.State
   
 drawStation :: State ->
                GLfloat ->

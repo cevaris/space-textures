@@ -3,7 +3,7 @@ module Graphics.Object.Cube (drawCube) where
 import Graphics.UI.GLUT
 
 import Graphics.Util.GLUtils
-
+import Data.State
 
 --drawCube :: Float -> (Float, Float, Float) -> IO ()
 --drawCube s (x, y, z) = do

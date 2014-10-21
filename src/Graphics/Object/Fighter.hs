@@ -3,7 +3,7 @@ module Graphics.Object.Fighter (drawFighter) where
 import Graphics.UI.GLUT
 
 import Graphics.Util.GLUtils
-  
+import Data.State
 
 
 --Draw solid airplane

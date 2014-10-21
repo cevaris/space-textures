@@ -14,6 +14,7 @@ executable SpaceTexture
                      src/Graphics/Util
                      src/Graphics/Scene
                      src/Binding/
+                     src/State
     main-is:         SpaceTexture.hs
     build-depends:   base,
                      GLUT,

@@ -4,6 +4,7 @@ import Graphics.UI.GLUT
 import Data.Fixed
 
 import Graphics.Util.GLUtils
+import Data.State
 
 spherePh:: Float -> [Float]
 spherePh d = [ ph | ph <- [(-90.0)..90.0], ((mod' ph d) == 0 && ph < 90)]

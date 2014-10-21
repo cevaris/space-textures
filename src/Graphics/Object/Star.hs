@@ -6,6 +6,7 @@ import Graphics.UI.GLUT.Objects
 import Graphics.Util.GLUtils
 
 import Graphics.Object.Sphere
+import Data.State
 
 -- Draw solid pyramid
 --  scale (s)

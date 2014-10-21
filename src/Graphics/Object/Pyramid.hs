@@ -3,6 +3,7 @@ module Graphics.Object.Pyramid (drawPyramid) where
 import Graphics.UI.GLUT
 
 import Graphics.Util.GLUtils
+import Data.State
 
 -- Draw solid pyramid
 ----  scale (s)

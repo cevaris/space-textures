@@ -2,6 +2,7 @@ import Control.Monad ( when )
 
 import Graphics.UI.GLUT
 
+import Data.State
 import Binding.Input
 import Graphics.Util.GLUtils
 import Graphics.Scene.Idle

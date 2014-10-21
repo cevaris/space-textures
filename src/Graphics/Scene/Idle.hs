@@ -3,7 +3,9 @@ module Graphics.Scene.Idle where
 import Data.Fixed
 
 import Graphics.UI.GLUT
+
 import Graphics.Util.GLUtils
+import Data.State
 
 
 idle :: State -> IdleCallback
