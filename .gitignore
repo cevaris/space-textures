@@ -1,0 +1,10 @@
+dist/
+*.c
+*.o
+*.eventlog
+.cabal-sandbox
+
+*.pdf
+
+SpaceTexture
+SpaceTextureAsg7
