@@ -36,7 +36,7 @@ data State = State {
   shine'  :: IORef Int,
   move'   :: IORef Bool,
 
-  textures :: IORef Textures,
+  textures :: Textures,
    
   info    :: IORef (String,String)
 }
@@ -64,28 +64,33 @@ makeState = do
   sh <- newIORef 6
   mv <- newIORef True
   tx <- makeTextures
-  ty <- newIORef tx
 
   i  <- newIORef ("","")
   return $ State {  
     frames = f, t0 = t, ph' = ph, th' = th, gr' = gr, zh' = zh, asp = as, fov = fv, dim = di, 
     ylight' = yl, rlight' = rl, emiss' = em, diff' = df, amb' = am, spec' = sp, smooth' = sm, light' = li, shine' = sh,
     move' = mv,
-    textures = ty,
+    textures = tx,
     info = i
   }
 
 
 data Textures = Textures {
-  steel :: TextureObject
+  steel :: TextureObject,
+  water :: TextureObject,
+  borg  :: TextureObject
 } deriving (Show, Eq)
 
 makeTextures :: IO Textures
 makeTextures = do
   steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
+  water' <- loadGLTextureFromFile "resources/textures/water.jpg"
+  borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
 
   return $ Textures {
-    steel = steel'
+    steel = steel',
+    water = water',
+    borg  = borg'
   }
 
 

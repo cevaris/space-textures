@@ -139,6 +139,7 @@ draw state = do
       yellow   = (Point4 1.0 1.0 0.0 1.0)
       white    = (Point4 1 1 1 1)
       black    = (Point4 0 0 0 1)
+      lBlue    = (Point4 (173/255) (216/255) (230/255) 0)
       emiss    = (Point4 0.0 0.0 (0.01*emission) 1.0)
       darkGray = (Point4 (50/255) (50/255) (50/255) 0)
       snowGray = (Point4 (138/255) (138/255) (138/255) 0)
@@ -204,7 +205,7 @@ draw state = do
 
   drawCube state $ ObjectAttributes {  
     scaleSize  = (Just 0.5),
-    paint      = Just $ (Point4 1 0 0 0),
+    paint      = Just lBlue,
     location   = (Just ((-1.5), 0, 0)),
     noseVector = Nothing,
     upVector   = Nothing,
@@ -268,8 +269,6 @@ myInit :: [String] -> State -> IO ()
 myInit args state = do
   clearColor $= Color4 (100/255) (100/255) (100/255) 0
   depthFunc $= Just Less  
-
-  texture Texture2D $= Enabled
 
 
 main :: IO ()

@@ -34,6 +34,12 @@ drawNormal3f x y z = currentNormal $= Normal3 ((realToFrac x)::GLfloat) ((realTo
 drawVertex3f :: Float -> Float -> Float -> IO ()
 drawVertex3f x y z = vertex $ vertex3f x y z
 
+drawTexCoord2f :: Float -> Float -> IO ()
+drawTexCoord2f x y = texCoord $ texCoord2f x y
+
+texCoord2f :: Float -> Float -> TexCoord2 GLfloat
+texCoord2f x y = TexCoord2 ((realToFrac x)::GLfloat) ((realToFrac y)::GLfloat)
+
 vertex3f :: Float -> Float -> Float -> Vertex3 GLfloat
 vertex3f x y z = Vertex3 ((realToFrac x)::GLfloat) ((realToFrac y)::GLfloat) ((realToFrac z)::GLfloat)
 
@@ -93,17 +99,7 @@ round2GL x = showGFloat (Just 2) x ""
 
 listf :: [Float] -> [GLfloat]
 listf ls = map (\x -> ((realToFrac x)::GLfloat)) ls
-
-
-makeTextures :: IO Textures
-makeTextures = do
-  steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
-
-  return $ Textures {
-    steel = steel'
-  }
-
-
+    
 drawLightingEffects :: ObjectAttributes -> IO ()
 drawLightingEffects object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
   
