@@ -2,6 +2,7 @@ module Graphics.Util.GLUtils where
 
 import Data.IORef ( IORef, newIORef )
 import Numeric
+import Data.Fixed
 
 import Graphics.Rendering.OpenGL.Raw.ARB.WindowPos
 import Graphics.UI.GLUT
@@ -102,6 +103,25 @@ round2GL x = showGFloat (Just 2) x ""
 
 listf :: [Float] -> [GLfloat]
 listf ls = map (\x -> ((realToFrac x)::GLfloat)) ls
+
+
+spherePh:: Float -> [Float]
+spherePh d = [ ph | ph <- [(-90.0)..90.0], ((mod' ph d) == 0 && ph < 90)]
+
+sphereTh:: Float -> [Float]
+sphereTh d = [th | th <- [0.0..360.0], (mod' th d) == 0]
+
+
+drawLatBand :: Float -> (Float,Float) -> IO ()
+drawLatBand d (ph, th) =  do
+
+  let x = (-glSin(th))*glCos(ph)
+      y =   glCos(th) *glCos(ph)
+      z =              glSin(ph)
+
+  drawNormal3f x y z
+  drawTexCoord2f (th/360) (ph/180+0.5)
+  drawVertex3f x y z
     
 drawLightingEffects :: ObjectAttributes -> IO ()
 drawLightingEffects object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do

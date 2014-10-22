@@ -13,6 +13,7 @@ import Binding.Input
 import Graphics.Util.GLUtils
 import Graphics.Scene.Idle
 import Graphics.Object.Cube
+import Graphics.Object.BorgCube
 import Graphics.Object.Star
 import Graphics.Object.Grid
 import Graphics.Object.StarCluster
@@ -20,6 +21,7 @@ import Graphics.Object.Fighter
 import Graphics.Object.Pyramid
 import Graphics.Object.Station
 import Graphics.Object.Sphere
+import Graphics.Object.AlienSphere
 
 ----------------------------------------------------------------------------------------------------------------
 -- Timer 
@@ -203,7 +205,7 @@ draw state = do
     shininess  = Just shine
   }
 
-  drawCube state $ ObjectAttributes {  
+  drawBorgCube state $ ObjectAttributes {  
     scaleSize  = (Just 0.5),
     paint      = Just lBlue,
     location   = (Just ((-1.5), 0, 0)),
@@ -220,7 +222,7 @@ draw state = do
 
   drawStation state (fToGL (gr*1.2)) 0.3 (1,1,1)
 
-  drawSphere state $ ObjectAttributes {  
+  drawAlienSphere state $ ObjectAttributes {  
     scaleSize  = (Just 0.5),
     paint      = Just $ (Point4 1 1 1 1),
     location   = (Just (0, 0, 0)),

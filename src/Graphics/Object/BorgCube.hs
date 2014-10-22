@@ -1,4 +1,4 @@
-module Graphics.Object.Cube (drawCube) where 
+module Graphics.Object.BorgCube (drawBorgCube) where 
  
 import Graphics.UI.GLUT
 
@@ -6,10 +6,13 @@ import Graphics.Util.GLUtils
 import Data.State
 
 
-drawCube :: State -> ObjectAttributes -> IO ()
-drawCube state object@(ObjectAttributes scaleSize paint location noseVector upVector _ _ _ _ _) = do
+drawBorgCube :: State -> ObjectAttributes -> IO ()
+drawBorgCube state object@(ObjectAttributes scaleSize paint location noseVector upVector _ _ _ _ _) = do
 
   let w = 1.0
+
+  let tex = textures state
+      borg' = borg tex
 
   preservingMatrix $ do
     preservingAttrib [AllServerAttributes] $ do
@@ -22,6 +25,13 @@ drawCube state object@(ObjectAttributes scaleSize paint location noseVector upVe
           color3f px py pz
           translate $ vector3f lx ly lz
           scale3f s s s
+          
+          texture Texture2D $= Enabled
+          textureBinding Texture2D $= Just borg'
+          --textureWrapMode Texture2D S $= (Repeated, Clamp)
+          --textureWrapMode Texture2D T $= (Repeated, Clamp)
+          textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
+          textureFunction $= Modulate
 
           renderPrimitive Quads $ do
             cube w
