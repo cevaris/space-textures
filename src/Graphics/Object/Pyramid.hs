@@ -16,7 +16,7 @@ import Data.State
 --               (Float, Float, Float) -> IO ()
 --drawPyramid s (x, y, z) (dx, dy, dz) (ux, uy, uz) = do
 drawPyramid :: State -> ObjectAttributes -> IO ()
-drawPyramid state object@(ObjectAttributes scaleSize paint location noseVector upVector _ _ _ _ _) = do
+drawPyramid state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector _ _ _ _ _) = do
 
   case (location, noseVector, upVector, scaleSize, paint) of
     ((Just (lx, ly, lz)), (Just (dx, dy, dz)), (Just (ux, uy, uz)), (Just s), (Just (Point4 cx cy cz ca))) -> do 

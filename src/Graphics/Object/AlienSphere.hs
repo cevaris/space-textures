@@ -7,7 +7,7 @@ import Data.State
 
 --Draw solid sphere
 drawAlienSphere :: State -> ObjectAttributes -> IO ()
-drawAlienSphere state object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
+drawAlienSphere state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
 
   preservingMatrix $ do
     preservingAttrib [AllServerAttributes] $ do
@@ -20,8 +20,11 @@ drawAlienSphere state object@(ObjectAttributes scaleSize paint location noseVect
           color3f px py pz
           translate $ vector3f lx ly lz
           scale3f s s s
-          --rotate 90.0 $ Vector3 0 1 0
+          case (rotation) of
+            ((Just a)) -> do
+              rotate1f a $ vector3f 0 1 0
           rotate1f 90 $ vector3f 1 0 0
+
 
           drawLightingEffects object
 

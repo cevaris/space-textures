@@ -26,6 +26,7 @@ drawStarCluster state (xT, yT, zT) = do
         scale3f (0.015*abs(x)) (0.015*abs(x)) (0.015*abs(x))
 
         drawSphere state $ ObjectAttributes {  
+          rotation   = Nothing,
           scaleSize  = (Just 0.5),
           paint      = Just $ (Point4 1 0 0 0),
           location   = (Just (0, 0, 0)),

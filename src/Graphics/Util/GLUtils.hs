@@ -124,7 +124,7 @@ drawLatBand d (ph, th) =  do
   drawVertex3f x y z
     
 drawLightingEffects :: ObjectAttributes -> IO ()
-drawLightingEffects object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
+drawLightingEffects object@(ObjectAttributes rotation scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
   
   case shininess of 
       (Just sh) -> do 

@@ -7,7 +7,7 @@ import Data.State
 
 
 drawBorgCube :: State -> ObjectAttributes -> IO ()
-drawBorgCube state object@(ObjectAttributes scaleSize paint location noseVector upVector _ _ _ _ _) = do
+drawBorgCube state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector _ _ _ _ _) = do
 
   let w = 1.0
 

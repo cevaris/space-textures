@@ -88,7 +88,6 @@ makeTextures = do
   water' <- loadGLTextureFromFile "resources/textures/water.jpg"
   borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
   alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
-  --alien' <- loadGLTextureFromFile "resources/textures/earth.bmp"
 
   return $ Textures {
     steel = steel',
@@ -101,6 +100,7 @@ makeTextures = do
 type Point3 = (Float, Float, Float)
 data Point4 = Point4 Float Float Float Float deriving (Show, Eq)
 
+type RotAngle   = Maybe Float
 type Scale      = Maybe Float
 type Paint      = Maybe Point4
 type Location   = Maybe Point3
@@ -116,6 +116,7 @@ type Shininess  = Maybe Int
 
 --type ObjectAttributes = (Scale, Paint, Location, NoseVector, UpVector, Ambience4, Diffuse4, Specular4, Shininess)
 data ObjectAttributes = ObjectAttributes {
+  rotation   :: RotAngle,
   scaleSize  :: Scale,
   paint      :: Paint,
   location   :: Location,

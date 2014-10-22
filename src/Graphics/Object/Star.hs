@@ -14,7 +14,7 @@ import Data.State
 --drawStar :: Float-> (Float, Float, Float) -> IO ()
 --drawStar s (x, y, z) = do
 drawStar :: State -> ObjectAttributes -> IO ()
-drawStar state object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
+drawStar state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
   postRedisplay Nothing
   --preservingMatrix $ do
   --  preservingAttrib [AllServerAttributes] $ do  

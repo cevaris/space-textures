@@ -12,7 +12,7 @@ import Data.State
 --  nose towards (dx,dy,dz)
 --  up towards (ux,uy,uz)
 drawFighter :: State -> ObjectAttributes -> IO ()
-drawFighter state object@(ObjectAttributes scaleSize paint location noseVector upVector _ _ _ _ _) = do
+drawFighter state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector _ _ _ _ _) = do
   
 
   case (location, noseVector, upVector, scaleSize, paint) of

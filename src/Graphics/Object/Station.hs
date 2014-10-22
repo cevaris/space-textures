@@ -42,7 +42,8 @@ drawStation state a s (x, y, z) = do
         scale3f s s s
         rotate a (Vector3 0 1 0)
 
-        drawCube state $ ObjectAttributes {  
+        drawCube state $ ObjectAttributes {
+          rotation   = Nothing,  
           scaleSize  = Just cs,
           paint      = Just gray,
           location   = Just $ (0, 0, 0),
@@ -56,6 +57,7 @@ drawStation state a s (x, y, z) = do
         }
         -- Bottom
         drawPyramid state $ ObjectAttributes {
+          rotation   = Nothing,
           scaleSize  = Just $ s,
           paint      = Just gray,
           location   = Just $ (0,(-0.75),0),
@@ -69,6 +71,7 @@ drawStation state a s (x, y, z) = do
         }
         -- Top
         drawPyramid state $ ObjectAttributes {
+          rotation   = Nothing,
           scaleSize  = Just $ s,
           paint      = Just gray,
           location   = Just $ (0,0.75,0),

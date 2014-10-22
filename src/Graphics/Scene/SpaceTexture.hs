@@ -166,7 +166,8 @@ draw state = do
 
 
     
-  drawFighter state $ ObjectAttributes {  
+  drawFighter state $ ObjectAttributes {
+    rotation   = Nothing,
     scaleSize  = Just 2,
     paint      = Just darkGray,
     location   = Just (0, 1, 1),
@@ -179,7 +180,8 @@ draw state = do
     shininess  = Just shine
   }
 
-  drawFighter state $ ObjectAttributes {  
+  drawFighter state $ ObjectAttributes {
+    rotation   = Nothing,
     scaleSize  = Just 2,
     paint      = Just darkGray,
     location   = Just (0, (-1), 0),
@@ -192,7 +194,8 @@ draw state = do
     shininess  = Just shine
   }
 
-  drawSphere state $ ObjectAttributes {  
+  drawSphere state $ ObjectAttributes {
+    rotation   = Nothing,
     scaleSize  = (Just 0.25),
     paint      = Just $ (Point4 255 255 0 0),
     location   = (Just loc3),
@@ -205,7 +208,8 @@ draw state = do
     shininess  = Just shine
   }
 
-  drawBorgCube state $ ObjectAttributes {  
+  drawBorgCube state $ ObjectAttributes {
+    rotation   = Nothing,
     scaleSize  = (Just 0.5),
     paint      = Just lBlue,
     location   = (Just ((-1.5), 0, 0)),
@@ -222,7 +226,8 @@ draw state = do
 
   drawStation state (fToGL (gr*1.2)) 0.3 (1,1,1)
 
-  drawAlienSphere state $ ObjectAttributes {  
+  drawAlienSphere state $ ObjectAttributes {
+    rotation   = Just (gr*0.25),
     scaleSize  = (Just 0.5),
     paint      = Just $ (Point4 1 1 1 1),
     location   = (Just (0, 0, 0)),
