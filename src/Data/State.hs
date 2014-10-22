@@ -87,8 +87,8 @@ makeTextures = do
   steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
   water' <- loadGLTextureFromFile "resources/textures/water.jpg"
   borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
-  --alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
-  alien' <- loadGLTextureFromFile "resources/textures/earth.bmp"
+  alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
+  --alien' <- loadGLTextureFromFile "resources/textures/earth.bmp"
 
   return $ Textures {
     steel = steel',

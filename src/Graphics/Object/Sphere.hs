@@ -16,18 +16,13 @@ sphereTh d = [th | th <- [0.0..360.0], (mod' th d) == 0]
 drawLatBand :: Float -> (Float,Float) -> IO ()
 drawLatBand d (ph, th) =  do
 
-  
-  --double x = -Sin(th)*Cos(ph);
-  --double y =  Cos(th)*Cos(ph);
-  --double z =          Sin(ph);
+  let x = (-glSin(th))*glCos(ph)
+      y =   glCos(th) *glCos(ph)
+      z =              glSin(ph)
 
-  drawNormal3f ((sin th)*(cos ph)) (sin ph) ((cos th)*(cos ph))
-  --drawTexCoord2f (th/360) (ph/180+0.5)
-  drawVertex3f ((sin th)*(cos ph)) (sin ph) ((cos th)*(cos ph))
-
-  drawNormal3f ((sin th)*(cos (ph+d))) (sin (ph+d)) ((cos th)*(cos (ph+d)))
-  --drawTexCoord2f (th/360) ((ph+d)/180+0.5)
-  drawVertex3f ((sin th)*(cos (ph+d))) (sin (ph+d)) ((cos th)*(cos (ph+d)))
+  drawNormal3f x y z
+  drawTexCoord2f (th/360) (ph/180+0.5)
+  drawVertex3f x y z
 
   
 
@@ -41,12 +36,13 @@ drawSphere state object@(ObjectAttributes scaleSize paint location noseVector up
           tex = textures state
           alien' = alien tex
 
-
       case (paint, location, scaleSize) of
         ((Just (Point4 px py pz pa)), (Just (lx, ly, lz)), (Just s))-> do 
           color3f px py pz
           translate $ vector3f lx ly lz
           scale3f s s s
+          --rotate 90.0 $ Vector3 0 1 0
+          rotate1f 90 $ vector3f 1 0 0
 
           drawLightingEffects object
 
@@ -58,5 +54,7 @@ drawSphere state object@(ObjectAttributes scaleSize paint location noseVector up
           --textureFunction $= Modulate
 
           mapM_ (\ph -> do
-              renderPrimitive QuadStrip $ mapM_ (\th -> drawLatBand q (ph, th)) (sphereTh q)
+              renderPrimitive QuadStrip $ mapM_ (\th -> do
+                drawLatBand q (ph, th)
+                drawLatBand q ((ph+5), th)) (sphereTh q)
             ) (spherePh q)

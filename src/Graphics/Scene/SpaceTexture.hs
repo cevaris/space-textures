@@ -198,7 +198,7 @@ draw state = do
     upVector   = Nothing,
     ambience4  = Nothing,
     diffuse4   = Nothing,
-    specular4  = Nothing,
+    specular4  = Just white,
     emission4  = Nothing,
     shininess  = Just shine
   }

@@ -37,6 +37,9 @@ drawVertex3f x y z = vertex $ vertex3f x y z
 drawTexCoord2f :: Float -> Float -> IO ()
 drawTexCoord2f x y = texCoord $ texCoord2f x y
 
+rotate1f :: Float -> Vector3 GLfloat -> IO ()
+rotate1f a v = rotate ((realToFrac a)::GLfloat) v
+
 texCoord2f :: Float -> Float -> TexCoord2 GLfloat
 texCoord2f x y = TexCoord2 ((realToFrac x)::GLfloat) ((realToFrac y)::GLfloat)
 
