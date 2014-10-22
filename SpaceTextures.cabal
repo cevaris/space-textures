@@ -19,6 +19,8 @@ executable SpaceTexture
     build-depends:   base,
                      GLUT,
                      OpenGLRaw,
-                     gloss,
+                     GLUtil,
+                     --gloss,
+                     --tga,
                      split,
                      random

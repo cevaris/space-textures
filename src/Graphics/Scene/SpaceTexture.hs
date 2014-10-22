@@ -1,6 +1,12 @@
 import Control.Monad ( when )
+import Control.Applicative
 
 import Graphics.UI.GLUT
+import Graphics.GLUtil
+--import Codec.Picture
+--import qualified Graphics.Rendering.OpenGL as GL
+--import qualified Graphics.GLUtil as GLU
+--import qualified Codec.Picture as Pic
 
 import Data.State
 import Binding.Input
@@ -16,6 +22,11 @@ import Graphics.Object.Station
 import Graphics.Object.Sphere
 
 
+loadGLTextureFromFile :: FilePath -> IO TextureObject
+loadGLTextureFromFile f = do t <- either error id <$> readTexture f
+                             textureFilter Texture2D $= ((Linear', Nothing), Linear')
+                             texture2DWrap $= (Mirrored, ClampToEdge)
+                             return t
 ----------------------------------------------------------------------------------------------------------------
 -- Timer 
 timerFrequencyMillis :: Timeout
@@ -265,8 +276,7 @@ myInit args state = do
   --clearColor $= Color4 0 0 0 0
   clearColor $= Color4 (100/255) (100/255) (100/255) 0
   depthFunc $= Just Less  
-  
-  
+
 
 main :: IO ()
 main = do
