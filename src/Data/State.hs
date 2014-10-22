@@ -78,7 +78,8 @@ makeState = do
 data Textures = Textures {
   steel :: TextureObject,
   water :: TextureObject,
-  borg  :: TextureObject
+  borg  :: TextureObject,
+  alien :: TextureObject
 } deriving (Show, Eq)
 
 makeTextures :: IO Textures
@@ -86,11 +87,14 @@ makeTextures = do
   steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
   water' <- loadGLTextureFromFile "resources/textures/water.jpg"
   borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
+  --alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
+  alien' <- loadGLTextureFromFile "resources/textures/earth.bmp"
 
   return $ Textures {
     steel = steel',
     water = water',
-    borg  = borg'
+    borg  = borg',
+    alien = alien'
   }
 
 
