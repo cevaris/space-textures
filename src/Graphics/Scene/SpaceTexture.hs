@@ -21,12 +21,6 @@ import Graphics.Object.Pyramid
 import Graphics.Object.Station
 import Graphics.Object.Sphere
 
-
-loadGLTextureFromFile :: FilePath -> IO TextureObject
-loadGLTextureFromFile f = do t <- either error id <$> readTexture f
-                             textureFilter Texture2D $= ((Linear', Nothing), Linear')
-                             texture2DWrap $= (Mirrored, ClampToEdge)
-                             return t
 ----------------------------------------------------------------------------------------------------------------
 -- Timer 
 timerFrequencyMillis :: Timeout
@@ -169,7 +163,6 @@ draw state = do
 
 
     
-  --drawFighter 1.5 (1, 0.7, 0) (1,0,0) (0,1,0)  
   drawFighter state $ ObjectAttributes {  
     scaleSize  = Just 2,
     paint      = Just darkGray,
@@ -273,9 +266,10 @@ draw state = do
 
 myInit :: [String] -> State -> IO ()
 myInit args state = do
-  --clearColor $= Color4 0 0 0 0
   clearColor $= Color4 (100/255) (100/255) (100/255) 0
   depthFunc $= Just Less  
+
+  texture Texture2D $= Enabled
 
 
 main :: IO ()
@@ -296,6 +290,7 @@ main = do
     keyboardMouseCallback $= Just (keyboard state)
     --keyboardUpCallback $= Just (keyboard state)
     visibilityCallback $= Just (visible state)
+
     mainLoop
   
 

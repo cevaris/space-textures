@@ -1,10 +1,10 @@
 module Data.State where
 import Data.IORef ( IORef, newIORef )
 
---import Numeric
-
---import Graphics.Rendering.OpenGL.Raw.ARB.WindowPos
 import Graphics.UI.GLUT
+import Graphics.GLUtil
+
+import Graphics.Util.Textures
 
 ----------------------------------------------------------------------------------------------------------------
 -- Global State
@@ -13,7 +13,6 @@ data ChangeDirection = Increase | Decrease deriving (Show)
 data ProjectionView = PerspectiveView | OrthogonalView | FirstPersonView deriving (Show, Eq)
 
 data Direction = UpDirection | DownDirection | LeftDirection | RightDirection deriving (Show, Eq)
-
 
 data State = State {
   frames  :: IORef Int,
@@ -36,6 +35,8 @@ data State = State {
   light'  :: IORef Bool,
   shine'  :: IORef Int,
   move'   :: IORef Bool,
+
+  textures :: IORef Textures,
    
   info    :: IORef (String,String)
 }
@@ -62,14 +63,31 @@ makeState = do
   li <- newIORef True
   sh <- newIORef 6
   mv <- newIORef True
+  tx <- makeTextures
+  ty <- newIORef tx
 
   i  <- newIORef ("","")
   return $ State {  
     frames = f, t0 = t, ph' = ph, th' = th, gr' = gr, zh' = zh, asp = as, fov = fv, dim = di, 
     ylight' = yl, rlight' = rl, emiss' = em, diff' = df, amb' = am, spec' = sp, smooth' = sm, light' = li, shine' = sh,
     move' = mv,
+    textures = ty,
     info = i
   }
+
+
+data Textures = Textures {
+  steel :: TextureObject
+} deriving (Show, Eq)
+
+makeTextures :: IO Textures
+makeTextures = do
+  steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
+
+  return $ Textures {
+    steel = steel'
+  }
+
 
 type Point3 = (Float, Float, Float)
 data Point4 = Point4 Float Float Float Float deriving (Show, Eq)
@@ -85,6 +103,8 @@ type Specular4  = Maybe Point4
 type Emission4  = Maybe Point4
 type Shininess  = Maybe Int
 
+
+
 --type ObjectAttributes = (Scale, Paint, Location, NoseVector, UpVector, Ambience4, Diffuse4, Specular4, Shininess)
 data ObjectAttributes = ObjectAttributes {
   scaleSize  :: Scale,
@@ -98,4 +118,3 @@ data ObjectAttributes = ObjectAttributes {
   emission4  :: Emission4,
   shininess  :: Shininess
 } deriving (Show, Eq)
-

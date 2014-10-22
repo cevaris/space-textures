@@ -8,6 +8,9 @@ category:          Graphics
 
 extra-source-files:  readme.md
 
+data-dir:   resources/textures
+data-files: steel.jpg
+
 executable SpaceTexture
     hs-source-dirs:  src
                      src/Graphics/Object

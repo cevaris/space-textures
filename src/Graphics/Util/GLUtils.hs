@@ -1,10 +1,12 @@
 module Graphics.Util.GLUtils where
-import Data.IORef ( IORef, newIORef )
 
+import Data.IORef ( IORef, newIORef )
 import Numeric
 
 import Graphics.Rendering.OpenGL.Raw.ARB.WindowPos
 import Graphics.UI.GLUT
+import Graphics.GLUtil
+import Graphics.Util.Textures
 
 import Data.State
 
@@ -25,35 +27,6 @@ glSin x = sin(3.1415927/180*x)
 
 toDeg :: Float -> Float
 toDeg x = x*(3.1415927/180)
-
-drawLightingEffects :: ObjectAttributes -> IO ()
-drawLightingEffects object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
-  
-  case shininess of 
-      (Just sh) -> do 
-        materialShininess FrontAndBack $= (iToGL sh)
-      _ -> postRedisplay Nothing
-
-  case specular4 of 
-    (Just point4) -> do 
-      materialSpecular FrontAndBack $= pointToColor4f point4
-    _ -> postRedisplay Nothing
-
-  case diffuse4 of 
-    (Just point4) -> do 
-      materialDiffuse FrontAndBack $= pointToColor4f point4
-    _ -> postRedisplay Nothing
-
-  case ambience4 of 
-    (Just point4) -> do 
-      materialAmbient FrontAndBack $= pointToColor4f point4
-    _ -> postRedisplay Nothing
-
-  case emission4 of 
-    (Just point4) -> do 
-      materialEmission FrontAndBack $= pointToColor4f point4
-    _ -> postRedisplay Nothing
-
 
 drawNormal3f :: Float -> Float -> Float -> IO ()
 drawNormal3f x y z = currentNormal $= Normal3 ((realToFrac x)::GLfloat) ((realToFrac y)::GLfloat) ((realToFrac z)::GLfloat)
@@ -120,3 +93,41 @@ round2GL x = showGFloat (Just 2) x ""
 
 listf :: [Float] -> [GLfloat]
 listf ls = map (\x -> ((realToFrac x)::GLfloat)) ls
+
+
+makeTextures :: IO Textures
+makeTextures = do
+  steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
+
+  return $ Textures {
+    steel = steel'
+  }
+
+
+drawLightingEffects :: ObjectAttributes -> IO ()
+drawLightingEffects object@(ObjectAttributes scaleSize paint location noseVector upVector ambience4 diffuse4 specular4 emission4 shininess) = do
+  
+  case shininess of 
+      (Just sh) -> do 
+        materialShininess FrontAndBack $= (iToGL sh)
+      _ -> postRedisplay Nothing
+
+  case specular4 of 
+    (Just point4) -> do 
+      materialSpecular FrontAndBack $= pointToColor4f point4
+    _ -> postRedisplay Nothing
+
+  case diffuse4 of 
+    (Just point4) -> do 
+      materialDiffuse FrontAndBack $= pointToColor4f point4
+    _ -> postRedisplay Nothing
+
+  case ambience4 of 
+    (Just point4) -> do 
+      materialAmbient FrontAndBack $= pointToColor4f point4
+    _ -> postRedisplay Nothing
+
+  case emission4 of 
+    (Just point4) -> do 
+      materialEmission FrontAndBack $= pointToColor4f point4
+    _ -> postRedisplay Nothing
