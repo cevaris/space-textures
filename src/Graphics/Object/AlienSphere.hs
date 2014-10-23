@@ -23,6 +23,7 @@ drawAlienSphere state object@(ObjectAttributes rotation scaleSize paint location
           case (rotation) of
             ((Just a)) -> do
               rotate1f a $ vector3f 0 1 0
+            _ -> postRedisplay Nothing
           rotate1f 90 $ vector3f 1 0 0
 
 

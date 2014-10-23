@@ -228,7 +228,7 @@ draw state = do
   drawStation state 0.0 0.3 (1,1,1)
 
   drawAlienSphere state $ ObjectAttributes {
-    rotation   = Just (gr*0.25),
+    rotation   = Nothing,
     scaleSize  = (Just 0.5),
     paint      = Just $ (Point4 1 1 1 1),
     location   = (Just (0, 0, 0)),
