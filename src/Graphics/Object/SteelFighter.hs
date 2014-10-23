@@ -62,9 +62,8 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         texture Texture2D $= Enabled
         textureBinding Texture2D $= Just steel'
         textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
-        textureWrapMode Texture2D S $= (Repeated, Clamp)
-        textureWrapMode Texture2D T $= (Repeated, Clamp)
-        --textureFunction $= Modulate
+        --textureWrapMode Texture2D S $= (Repeated, Repeat)
+        --textureWrapMode Texture2D T $= (Repeated, Repeat)
 
 
         -- Front Cone
@@ -105,25 +104,16 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
           drawVertex3f (cone*1.1)  (wid*1.05) (-(wid*0.6))
           color3f cx cy cz
 
-          -- Bottom
-          drawNormal3f 1 (-cone/wid) 0
-          drawTexCoord2f 1 0
-          drawVertex3f nose  0.0  0.0
-          drawTexCoord2f 0 1
-          drawVertex3f cone (-wid) (wid)
-          drawTexCoord2f 0 0
-          drawVertex3f cone (-wid) (-wid)
-
         
         -- Capsule
         renderPrimitive Quads $ do
           -- Front
           drawNormal3f 0 0 1
-          drawTexCoord2f 0 0
+          drawTexCoord2f 1 1
           drawVertex3f cone  wid  wid
           drawTexCoord2f 1 0
           drawVertex3f cone (-wid)  wid
-          drawTexCoord2f 1 1
+          drawTexCoord2f 0 0
           drawVertex3f tail (-wid)  wid
           drawTexCoord2f 0 1
           drawVertex3f tail  wid  wid
@@ -150,16 +140,7 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
           drawTexCoord2f 0 1
           drawVertex3f tail  wid  wid
 
-          -- Bottom
-          drawNormal3f 0 (-1) 0
-          drawTexCoord2f 0 0
-          drawVertex3f cone (-wid)  wid
-          drawTexCoord2f 1 0
-          drawVertex3f cone (-wid) (-wid)
-          drawTexCoord2f 1 1
-          drawVertex3f tail (-wid) (-wid)
-          drawTexCoord2f 0 1
-          drawVertex3f tail (-wid)  wid
+        
 
           -- Tail Cap
           drawNormal3f (-1) 0 0
@@ -175,7 +156,7 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         --color3f 1 1 0
         --color3f (211/255) (211/255) (211/255)
         --color3f 1 0 0
-        color3f cx cy cz
+        --color3f cx cy cz
 
         -- Top of Side Wings
         renderPrimitive Triangles $ do
@@ -199,23 +180,25 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
           drawVertex3f tail 0.0001 (-0.5)
 
         --color3f 1 0 0
-        color3f cx cy cz
+        --color3f cx cy cz
         --color3f (211/255) (211/255) (211/255)
+
+        -- Top Fin Wing
         renderPrimitive Triangles $ do
           drawNormal3f 0 0 1
-          drawTexCoord2f 0 0
+          drawTexCoord2f 1 0
           drawVertex3f strk 0.0 0.0001
           drawTexCoord2f 0 1
           drawVertex3f tail 0.3 0.0001
-          drawTexCoord2f 1 0
+          drawTexCoord2f 0 0
           drawVertex3f tail 0.0 0.0001
 
           drawNormal3f 0 0 (-1)
-          drawTexCoord2f 0 0
+          drawTexCoord2f 1 0
           drawVertex3f strk 0.0 (-0.0001)
           drawTexCoord2f 0 1
           drawVertex3f tail 0.3 (-0.0001)
-          drawTexCoord2f 1 0
+          drawTexCoord2f 0 0
           drawVertex3f tail 0.0 (-0.0001)
 
 
@@ -224,8 +207,8 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         texture Texture2D $= Enabled
         textureBinding Texture2D $= Just comb'
         textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
-        textureWrapMode Texture2D S $= (Repeated, Clamp)
-        textureWrapMode Texture2D T $= (Repeated, Clamp)
+        textureWrapMode Texture2D S $= (Repeated, Repeat)
+        textureWrapMode Texture2D T $= (Repeated, Repeat)
 
         -- Bottom of Side Wings
         renderPrimitive Triangles $ do
@@ -250,6 +233,27 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
           drawTexCoord2f 0 0
           drawVertex3f tail (-0.0001) (-0.5)
 
+           -- Bottom Cone
+          drawNormal3f 1 (-cone/wid) 0
+          drawTexCoord2f 1 0.5
+          drawVertex3f nose  0.0  0.0
+          drawTexCoord2f 0 1 
+          drawVertex3f cone (-wid) (wid)
+          drawTexCoord2f 0 0
+          drawVertex3f cone (-wid) (-wid)
+
+
+        renderPrimitive Quads $ do
+          -- Bottom Capsule
+          drawNormal3f 0 (-1) 0
+          drawTexCoord2f 0 0
+          drawVertex3f cone (-wid)  wid
+          drawTexCoord2f 1 0
+          drawVertex3f cone (-wid) (-wid)
+          drawTexCoord2f 1 1
+          drawVertex3f tail (-wid) (-wid)
+          drawTexCoord2f 0 1
+          drawVertex3f tail (-wid)  wid
       
         
 

@@ -51,13 +51,15 @@ makeState = do
   zh <- newIORef 90
   fv <- newIORef 65
   as <- newIORef 1
-  di <- newIORef 2
+  --di <- newIORef 2
+  di <- newIORef 0.5
   
   yl <- newIORef 0
   rl <- newIORef 5
   em <- newIORef 0
   df <- newIORef 45
-  am <- newIORef 45
+  --am <- newIORef 45
+  am <- newIORef 100
   sp <- newIORef 55
   sm <- newIORef Smooth
   li <- newIORef True
@@ -89,7 +91,7 @@ data Textures = Textures {
 makeTextures :: IO Textures
 makeTextures = do
   --steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
-  steel' <- loadGLTextureFromFile "resources/textures/hull-steel.jpg"
+  steel' <- loadGLTextureFromFile "resources/textures/future-steel.jpg"
   comb'  <- loadGLTextureFromFile "resources/textures/comb-steel.jpg"
   water' <- loadGLTextureFromFile "resources/textures/water.jpg"
   borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
