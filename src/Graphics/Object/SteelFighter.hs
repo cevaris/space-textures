@@ -39,6 +39,8 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         z2 = x0*y1-x1*y0
         tex = textures state
         steel' = steel tex
+        comb' = comb tex
+
     mat <- newMatrix RowMajor $ listf [x0, x1,  x2, 0,
                                        y0, y1,  y2, 0,
                                        z0, z1,  z2, 0,
@@ -64,6 +66,8 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         textureWrapMode Texture2D T $= (Repeated, Clamp)
         --textureFunction $= Modulate
 
+
+        -- Front Cone
         renderPrimitive Triangles $ do
 
           -- Front
@@ -111,6 +115,7 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
           drawVertex3f cone (-wid) (-wid)
 
         
+        -- Capsule
         renderPrimitive Quads $ do
           -- Front
           drawNormal3f 0 0 1
@@ -171,44 +176,81 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
         --color3f (211/255) (211/255) (211/255)
         --color3f 1 0 0
         color3f cx cy cz
+
+        -- Top of Side Wings
         renderPrimitive Triangles $ do
 
           -- Right Top Wing
           drawNormal3f 0 1 0
+          drawTexCoord2f 1 1
           drawVertex3f wing 0.0001  wid
+          drawTexCoord2f 1 0
           drawVertex3f tail 0.0001  wid
+          drawTexCoord2f 0 0
           drawVertex3f tail 0.0001  0.5
-          -- Right Bottom Wing
-          drawNormal3f 0 (-1) 0
-          drawVertex3f wing (-0.0001)  wid
-          drawVertex3f tail (-0.0001)  wid
-          drawVertex3f tail (-0.0001)  0.5
 
           -- Left Top Wing
           drawNormal3f 0 1 0
+          drawTexCoord2f 1 1
           drawVertex3f wing 0.0001 (-wid)
+          drawTexCoord2f 1 0
           drawVertex3f tail 0.0001 (-wid)
+          drawTexCoord2f 0 0
           drawVertex3f tail 0.0001 (-0.5)
-
-          -- Left Top Wing
-          drawNormal3f 0 (-1) 0
-          drawVertex3f wing (-0.0001) (-wid)
-          drawVertex3f tail (-0.0001) (-wid)
-          drawVertex3f tail (-0.0001) (-0.5)
 
         --color3f 1 0 0
         color3f cx cy cz
         --color3f (211/255) (211/255) (211/255)
         renderPrimitive Triangles $ do
           drawNormal3f 0 0 1
+          drawTexCoord2f 0 0
           drawVertex3f strk 0.0 0.0001
+          drawTexCoord2f 0 1
           drawVertex3f tail 0.3 0.0001
+          drawTexCoord2f 1 0
           drawVertex3f tail 0.0 0.0001
 
           drawNormal3f 0 0 (-1)
+          drawTexCoord2f 0 0
           drawVertex3f strk 0.0 (-0.0001)
+          drawTexCoord2f 0 1
           drawVertex3f tail 0.3 (-0.0001)
+          drawTexCoord2f 1 0
           drawVertex3f tail 0.0 (-0.0001)
+
+
+
+
+        texture Texture2D $= Enabled
+        textureBinding Texture2D $= Just comb'
+        textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
+        textureWrapMode Texture2D S $= (Repeated, Clamp)
+        textureWrapMode Texture2D T $= (Repeated, Clamp)
+
+        -- Bottom of Side Wings
+        renderPrimitive Triangles $ do
+
+
+          -- Right Bottom Wing
+          drawNormal3f 0 (-1) 0
+          drawTexCoord2f 1 1
+          drawVertex3f wing (-0.0001)  wid
+          drawTexCoord2f 1 0
+          drawVertex3f tail (-0.0001)  wid
+          drawTexCoord2f 0 0
+          drawVertex3f tail (-0.0001)  0.5
+
+
+          -- Left Bottom Wing
+          drawNormal3f 0 (-1) 0
+          drawTexCoord2f 1 1
+          drawVertex3f wing (-0.0001) (-wid)
+          drawTexCoord2f 1 0
+          drawVertex3f tail (-0.0001) (-wid)
+          drawTexCoord2f 0 0
+          drawVertex3f tail (-0.0001) (-0.5)
+
+      
         
 
 

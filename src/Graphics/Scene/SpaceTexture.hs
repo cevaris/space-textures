@@ -237,7 +237,7 @@ draw state = do
   --  shininess  = Just shine
   --}
   
-  --drawStation state (fToGL gr) 0.3 (1.5,0,0)
+  drawStation state (fToGL gr) 0.3 (1.5,0,0)
 
   --drawStation state 0.0 0.35 (1,1,1)
 

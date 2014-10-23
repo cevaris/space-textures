@@ -77,6 +77,7 @@ makeState = do
 
 data Textures = Textures {
   steel :: TextureObject,
+  comb :: TextureObject,
   water :: TextureObject,
   borg  :: TextureObject,
   alien :: TextureObject,
@@ -87,7 +88,9 @@ data Textures = Textures {
 
 makeTextures :: IO Textures
 makeTextures = do
-  steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
+  --steel' <- loadGLTextureFromFile "resources/textures/steel.jpg"
+  steel' <- loadGLTextureFromFile "resources/textures/hull-steel.jpg"
+  comb'  <- loadGLTextureFromFile "resources/textures/comb-steel.jpg"
   water' <- loadGLTextureFromFile "resources/textures/water.jpg"
   borg'  <- loadGLTextureFromFile "resources/textures/borg.jpg"
   --alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
@@ -98,6 +101,7 @@ makeTextures = do
 
   return $ Textures {
     steel = steel',
+    comb  = comb',
     water = water',
     borg  = borg',
     alien = alien',
