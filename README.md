@@ -36,6 +36,9 @@ A Haskell OpenGL/GLUT implementation Space 3D Scene with textures
 ## Assignment Length
 ~15 hours
 
+## Sample
+![Output sample](https://s3.amazonaws.com/miscs.random/space-lightin.gif)
+
     
 ### Sources
 
