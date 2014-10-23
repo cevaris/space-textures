@@ -72,46 +72,46 @@ drawSteelFighter state object@(ObjectAttributes rotation scaleSize paint locatio
 
           -- Front
           drawNormal3f 1 0 (cone/wid)
-          drawTexCoord2f 0 0
-          drawVertex3f nose 0 0
-          drawTexCoord2f 0.5 1
-          drawVertex3f cone wid wid
           drawTexCoord2f 1 0
+          drawVertex3f nose 0 0
+          drawTexCoord2f 0 1
+          drawVertex3f cone wid wid
+          drawTexCoord2f 0 0
           drawVertex3f cone (-wid) wid
 
           -- Back
           drawNormal3f 1 0 (-cone/wid)
-          drawTexCoord2f 0 0
-          drawVertex3f nose  0.0  0.0
-          drawTexCoord2f 0.5 1
-          drawVertex3f cone  wid (-wid)
           drawTexCoord2f 1 0
+          drawVertex3f nose  0.0  0.0
+          drawTexCoord2f 0 1
+          drawVertex3f cone  wid (-wid)
+          drawTexCoord2f 0 0
           drawVertex3f cone (-wid) (-wid)
 
           -- Top
           drawNormal3f 1 (cone/wid) 0
-          drawTexCoord2f 0 0
-          drawVertex3f nose  0.0  0.0
-          drawTexCoord2f 0.5 1
-          drawVertex3f cone  wid  wid
           drawTexCoord2f 1 0
+          drawVertex3f nose  0.0  0.0
+          drawTexCoord2f 0 1
+          drawVertex3f cone  wid  wid
+          drawTexCoord2f 0 0
           drawVertex3f cone  wid (-wid)
 
           -- Cockpit
           color3f (0/255)  (0/255)  (0/255) 
           drawNormal3f 1 (cone/wid) 0
           drawVertex3f nose  0.0  0.0
-          drawVertex3f (cone*1.1)  (wid*1.05)  (wid*0.4)
-          drawVertex3f (cone*1.1)  (wid*1.05) (-(wid*0.4))
+          drawVertex3f (cone*1.1)  (wid*1.05)  (wid*0.6)
+          drawVertex3f (cone*1.1)  (wid*1.05) (-(wid*0.6))
           color3f cx cy cz
 
           -- Bottom
           drawNormal3f 1 (-cone/wid) 0
-          drawTexCoord2f 0 0
-          drawVertex3f nose  0.0  0.0
-          drawTexCoord2f 0.5 1
-          drawVertex3f cone (-wid) (wid)
           drawTexCoord2f 1 0
+          drawVertex3f nose  0.0  0.0
+          drawTexCoord2f 0 1
+          drawVertex3f cone (-wid) (wid)
+          drawTexCoord2f 0 0
           drawVertex3f cone (-wid) (-wid)
 
         
