@@ -5,7 +5,7 @@ import Graphics.UI.GLUT
 import Graphics.Util.GLUtils
 
 import Graphics.Object.Cube
-import Graphics.Object.Pyramid
+import Graphics.Object.MetalPyramid
 import Data.State
   
 drawStation :: State ->
@@ -45,7 +45,7 @@ drawStation state a s (x, y, z) = do
         drawCube state $ ObjectAttributes {
           rotation   = Nothing,  
           scaleSize  = Just cs,
-          paint      = Just gray,
+          paint      = Just white,
           location   = Just $ (0, 0, 0),
           noseVector = Nothing,
           upVector   = Nothing,
@@ -56,10 +56,10 @@ drawStation state a s (x, y, z) = do
           shininess  = Just shine
         }
         -- Bottom
-        drawPyramid state $ ObjectAttributes {
+        drawMetalPyramid state $ ObjectAttributes {
           rotation   = Nothing,
           scaleSize  = Just $ s,
-          paint      = Just gray,
+          paint      = Just white,
           location   = Just $ (0,(-0.75),0),
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,1,0),
@@ -70,10 +70,10 @@ drawStation state a s (x, y, z) = do
           shininess  = Just shine
         }
         -- Top
-        drawPyramid state $ ObjectAttributes {
+        drawMetalPyramid state $ ObjectAttributes {
           rotation   = Nothing,
           scaleSize  = Just $ s,
-          paint      = Just gray,
+          paint      = Just white,
           location   = Just $ (0,0.75,0),
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,(-1),0),

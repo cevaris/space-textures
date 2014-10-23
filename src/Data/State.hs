@@ -80,7 +80,9 @@ data Textures = Textures {
   water :: TextureObject,
   borg  :: TextureObject,
   alien :: TextureObject,
-  star  :: TextureObject
+  star  :: TextureObject,
+  metal1 :: TextureObject,
+  metal2 :: TextureObject
 } deriving (Show, Eq)
 
 makeTextures :: IO Textures
@@ -91,13 +93,17 @@ makeTextures = do
   --alien' <- loadGLTextureFromFile "resources/textures/terran.jpg"
   alien' <- loadGLTextureFromFile "resources/textures/deathstar.png"
   star'  <- loadGLTextureFromFile "resources/textures/star.jpg"
+  metal1' <- loadGLTextureFromFile "resources/textures/metal1.jpg"
+  metal2' <- loadGLTextureFromFile "resources/textures/metal1.jpg"
 
   return $ Textures {
     steel = steel',
     water = water',
     borg  = borg',
     alien = alien',
-    star  = star'
+    star  = star',
+    metal1 = metal1',
+    metal2 = metal2'
   }
 
 
