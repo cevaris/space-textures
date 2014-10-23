@@ -22,6 +22,7 @@ import Graphics.Object.Pyramid
 import Graphics.Object.Station
 import Graphics.Object.Sphere
 import Graphics.Object.AlienSphere
+import Graphics.Object.StarSphere
 
 ----------------------------------------------------------------------------------------------------------------
 -- Timer 
@@ -174,8 +175,8 @@ draw state = do
     noseVector = Just (0, (-1), 1),
     upVector   = Just (0,1,0),
     ambience4  = Nothing,
-    diffuse4   = Nothing,
-    specular4  = Just white,
+    diffuse4   = Just yellow,
+    specular4  = Just yellow,
     emission4  = Just emiss,
     shininess  = Just shine
   }
@@ -188,13 +189,13 @@ draw state = do
     noseVector = Just (0, 0, 1),
     upVector   = Just (0,1,0),
     ambience4  = Nothing,
-    diffuse4   = Nothing,
-    specular4  = Just white,
+    diffuse4   = Just yellow,
+    specular4  = Just yellow,
     emission4  = Just emiss,
     shininess  = Just shine
   }
 
-  drawSphere state $ ObjectAttributes {
+  drawStarSphere state $ ObjectAttributes {
     rotation   = Nothing,
     scaleSize  = (Just 0.25),
     paint      = Just $ (Point4 255 255 0 0),
@@ -202,9 +203,9 @@ draw state = do
     noseVector = Nothing,
     upVector   = Nothing,
     ambience4  = Nothing,
-    diffuse4   = Nothing,
-    specular4  = Just white,
-    emission4  = Nothing,
+    diffuse4   = Just yellow,
+    specular4  = Just yellow,
+    emission4  = Just yellow,
     shininess  = Just shine
   }
 
@@ -216,7 +217,7 @@ draw state = do
     noseVector = Nothing,
     upVector   = Nothing,
     ambience4  = Nothing,
-    diffuse4   = Nothing,
+    diffuse4   = Just yellow,
     specular4  = Just yellow,
     emission4  = Just emiss,
     shininess  = Just shine
@@ -224,7 +225,7 @@ draw state = do
   
   drawStation state (fToGL gr) 0.3 (1.5,0,0)
 
-  drawStation state (fToGL (gr*1.2)) 0.3 (1,1,1)
+  drawStation state 0.0 0.3 (1,1,1)
 
   drawAlienSphere state $ ObjectAttributes {
     rotation   = Just (gr*0.25),
@@ -274,7 +275,8 @@ draw state = do
 
 myInit :: [String] -> State -> IO ()
 myInit args state = do
-  clearColor $= Color4 (100/255) (100/255) (100/255) 0
+  --clearColor $= Color4 (100/255) (100/255) (100/255) 0
+  clearColor $= Color4 (50/255) (50/255) (50/255) 0
   depthFunc $= Just Less  
 
 

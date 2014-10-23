@@ -50,8 +50,8 @@ drawStation state a s (x, y, z) = do
           noseVector = Nothing,
           upVector   = Nothing,
           ambience4  = Nothing,
-          diffuse4   = Nothing,
-          specular4  = Just lightGray,
+          diffuse4   = Just yellow,
+          specular4  = Just yellow,
           emission4  = Just black,
           shininess  = Just shine
         }
@@ -64,8 +64,8 @@ drawStation state a s (x, y, z) = do
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,1,0),
           ambience4  = Nothing,
-          diffuse4   = Nothing,
-          specular4  = Just lightGray,
+          diffuse4   = Just yellow,
+          specular4  = Just yellow,
           emission4  = Just black,
           shininess  = Just shine
         }
@@ -77,9 +77,9 @@ drawStation state a s (x, y, z) = do
           location   = Just $ (0,0.75,0),
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,(-1),0),
-          ambience4  = Nothing,
-          diffuse4   = Nothing,
-          specular4  = Just lightGray,
+          ambience4  = Nothizzzzng,
+          diffuse4   = Just yellow,
+          specular4  = Just yellow,
           emission4  = Just black,
           shininess  = Just shine
         }
