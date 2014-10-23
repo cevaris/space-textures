@@ -17,7 +17,7 @@ import Graphics.Object.BorgCube
 import Graphics.Object.Star
 import Graphics.Object.Grid
 import Graphics.Object.StarCluster
-import Graphics.Object.Fighter
+import Graphics.Object.SteelFighter
 import Graphics.Object.Pyramid
 import Graphics.Object.Station
 import Graphics.Object.Sphere
@@ -167,33 +167,47 @@ draw state = do
 
 
     
-  drawFighter state $ ObjectAttributes {
+  --drawSteelFighter state $ ObjectAttributes {
+  --  rotation   = Nothing,
+  --  scaleSize  = Just 2,
+  --  paint      = Just white,
+  --  location   = Just (0, 1, 1),
+  --  noseVector = Just (0, (-1), 1),
+  --  upVector   = Just (0,1,0),
+  --  ambience4  = Just white,
+  --  diffuse4   = Just yellow,
+  --  specular4  = Just yellow,
+  --  emission4  = Just emiss,
+  --  shininess  = Just shine
+  --}
+
+  drawSteelFighter state $ ObjectAttributes {
     rotation   = Nothing,
     scaleSize  = Just 2,
-    paint      = Just darkGray,
-    location   = Just (0, 1, 1),
-    noseVector = Just (0, (-1), 1),
+    paint      = Just snowGray,
+    location   = Just (0, 0, 0),
+    noseVector = Just (1, 0, 0),
     upVector   = Just (0,1,0),
-    ambience4  = Nothing,
+    ambience4  = Just white,
     diffuse4   = Just yellow,
     specular4  = Just yellow,
     emission4  = Just emiss,
     shininess  = Just shine
   }
 
-  drawFighter state $ ObjectAttributes {
-    rotation   = Nothing,
-    scaleSize  = Just 2,
-    paint      = Just darkGray,
-    location   = Just (0, (-1), 0),
-    noseVector = Just (0, 0, 1),
-    upVector   = Just (0,1,0),
-    ambience4  = Nothing,
-    diffuse4   = Just yellow,
-    specular4  = Just yellow,
-    emission4  = Just emiss,
-    shininess  = Just shine
-  }
+  --drawSteelFighter state $ ObjectAttributes {
+  --  rotation   = Nothing,
+  --  scaleSize  = Just 2,
+  --  paint      = Just white,
+  --  location   = Just (0, (-1), 0),
+  --  noseVector = Just (0, 0, 1),
+  --  upVector   = Just (0,1,0),
+  --  ambience4  = Just white,
+  --  diffuse4   = Just yellow,
+  --  specular4  = Just yellow,
+  --  emission4  = Just emiss,
+  --  shininess  = Just shine
+  --}
 
   drawStarSphere state $ ObjectAttributes {
     rotation   = Nothing,
@@ -209,37 +223,37 @@ draw state = do
     shininess  = Just shine
   }
 
-  drawBorgCube state $ ObjectAttributes {
-    rotation   = Just zh,
-    scaleSize  = (Just 0.5),
-    paint      = Just lBlue,
-    location   = (Just ((-1.5), 0, 0)),
-    noseVector = Nothing,
-    upVector   = Nothing,
-    ambience4  = Nothing,
-    diffuse4   = Just yellow,
-    specular4  = Just yellow,
-    emission4  = Just emiss,
-    shininess  = Just shine
-  }
+  --drawBorgCube state $ ObjectAttributes {
+  --  rotation   = Just zh,
+  --  scaleSize  = (Just 0.5),
+  --  paint      = Just lBlue,
+  --  location   = (Just ((-1.5), 0, 0)),
+  --  noseVector = Nothing,
+  --  upVector   = Nothing,
+  --  ambience4  = Nothing,
+  --  diffuse4   = Just yellow,
+  --  specular4  = Just yellow,
+  --  emission4  = Just emiss,
+  --  shininess  = Just shine
+  --}
   
-  drawStation state (fToGL gr) 0.3 (1.5,0,0)
+  --drawStation state (fToGL gr) 0.3 (1.5,0,0)
 
-  drawStation state 0.0 0.35 (1,1,1)
+  --drawStation state 0.0 0.35 (1,1,1)
 
-  drawAlienSphere state $ ObjectAttributes {
-    rotation   = Nothing,
-    scaleSize  = (Just 0.5),
-    paint      = Just $ (Point4 1 1 1 1),
-    location   = (Just (0, 0, 0)),
-    noseVector = Nothing,
-    upVector   = Nothing,
-    ambience4  = Nothing,
-    diffuse4   = Nothing,
-    specular4  = Just yellow,
-    emission4  = Just emiss,
-    shininess  = Just shine
-  }
+  --drawAlienSphere state $ ObjectAttributes {
+  --  rotation   = Nothing,
+  --  scaleSize  = (Just 0.5),
+  --  paint      = Just $ (Point4 1 1 1 1),
+  --  location   = (Just (0, 0, 0)),
+  --  noseVector = Nothing,
+  --  upVector   = Nothing,
+  --  ambience4  = Nothing,
+  --  diffuse4   = Nothing,
+  --  specular4  = Just yellow,
+  --  emission4  = Just emiss,
+  --  shininess  = Just shine
+  --}
 
   
 
