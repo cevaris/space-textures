@@ -210,7 +210,7 @@ draw state = do
   }
 
   drawBorgCube state $ ObjectAttributes {
-    rotation   = Nothing,
+    rotation   = Just zh,
     scaleSize  = (Just 0.5),
     paint      = Just lBlue,
     location   = (Just ((-1.5), 0, 0)),
@@ -225,7 +225,7 @@ draw state = do
   
   drawStation state (fToGL gr) 0.3 (1.5,0,0)
 
-  drawStation state 0.0 0.3 (1,1,1)
+  drawStation state 0.0 0.35 (1,1,1)
 
   drawAlienSphere state $ ObjectAttributes {
     rotation   = Nothing,
@@ -276,7 +276,7 @@ draw state = do
 myInit :: [String] -> State -> IO ()
 myInit args state = do
   --clearColor $= Color4 (100/255) (100/255) (100/255) 0
-  clearColor $= Color4 (50/255) (50/255) (50/255) 0
+  clearColor $= Color4 (0/255) (0/255) (0/255) 0
   depthFunc $= Just Less  
 
 

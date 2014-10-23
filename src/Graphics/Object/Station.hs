@@ -4,7 +4,7 @@ import Graphics.UI.GLUT
 
 import Graphics.Util.GLUtils
 
-import Graphics.Object.Cube
+import Graphics.Object.MetalCube
 import Graphics.Object.MetalPyramid
 import Data.State
   
@@ -42,17 +42,17 @@ drawStation state a s (x, y, z) = do
         scale3f s s s
         rotate a (Vector3 0 1 0)
 
-        drawCube state $ ObjectAttributes {
+        drawMetalCube state $ ObjectAttributes {
           rotation   = Nothing,  
           scaleSize  = Just cs,
           paint      = Just white,
           location   = Just $ (0, 0, 0),
           noseVector = Nothing,
           upVector   = Nothing,
-          ambience4  = Nothing,
+          ambience4  = Just white,
           diffuse4   = Just yellow,
           specular4  = Just yellow,
-          emission4  = Just black,
+          emission4  = Just emiss,
           shininess  = Just shine
         }
         -- Bottom
@@ -63,10 +63,10 @@ drawStation state a s (x, y, z) = do
           location   = Just $ (0,(-0.75),0),
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,1,0),
-          ambience4  = Nothing,
+          ambience4  = Just white,
           diffuse4   = Just yellow,
           specular4  = Just yellow,
-          emission4  = Just black,
+          emission4  = Just emiss,
           shininess  = Just shine
         }
         -- Top
@@ -77,10 +77,10 @@ drawStation state a s (x, y, z) = do
           location   = Just $ (0,0.75,0),
           noseVector = Just $ (1,0,0),
           upVector   = Just $ (0,(-1),0),
-          ambience4  = Nothing,
+          ambience4  = Just white,
           diffuse4   = Just yellow,
           specular4  = Just yellow,
-          emission4  = Just black,
+          emission4  = Just emiss,
           shininess  = Just shine
         }
         

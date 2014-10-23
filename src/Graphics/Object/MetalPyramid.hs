@@ -59,11 +59,6 @@ drawMetalPyramid state object@(ObjectAttributes rotation scaleSize paint locatio
           textureFunction $= Modulate
 
           renderPrimitive Triangles $ do
-
-            --glTexCoord2f(0.0  ,0.0); glVertex2f( -1,-1);
-            --glTexCoord2f(rep  ,0.0); glVertex2f( +1,-1);
-            --glTexCoord2f(rep/2,rep); glVertex2f(X-1, Y);
-            
             -- Front
             drawNormal3f 0 0.5 0.5
             drawTexCoord2f 1 0

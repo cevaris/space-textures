@@ -1,4 +1,4 @@
-module Graphics.Object.BorgCube (drawBorgCube) where 
+module Graphics.Object.MetalCube (drawMetalCube) where 
  
 import Graphics.UI.GLUT
 
@@ -6,36 +6,28 @@ import Graphics.Util.GLUtils
 import Data.State
 
 
-drawBorgCube :: State -> ObjectAttributes -> IO ()
-drawBorgCube state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector _ _ _ _ _) = do
+drawMetalCube :: State -> ObjectAttributes -> IO ()
+drawMetalCube state object@(ObjectAttributes rotation scaleSize paint location noseVector upVector _ _ _ _ _) = do
 
   let w = 1.0
-
-  let tex = textures state
-      borg' = borg tex
+      tex = textures state
+      metal2' = metal2 tex
 
   preservingMatrix $ do
     preservingAttrib [AllServerAttributes] $ do
 
       drawLightingEffects object
 
-        
       case (paint, location, scaleSize) of
         ((Just (Point4 px py pz pa)), (Just (lx, ly, lz)), (Just s)) -> do 
           color3f px py pz
           translate $ vector3f lx ly lz
           scale3f s s s
-          case (rotation) of
-            ((Just a)) -> do
-              rotate1f a $ vector3f 0 1 0
-            _ -> postRedisplay Nothing
-          
+
           texture Texture2D $= Enabled
-          textureBinding Texture2D $= Just borg'
-          --textureWrapMode Texture2D S $= (Repeated, Clamp)
-          --textureWrapMode Texture2D T $= (Repeated, Clamp)
+          textureBinding Texture2D $= Just metal2'
           textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
-          textureFunction $= Modulate
+          --textureFunction $= Modulate
 
           renderPrimitive Quads $ do
             cube w
