@@ -5,6 +5,8 @@ A Haskell OpenGL/GLUT implementation Space 3D Scene with textures
 
 
 ## Installation
+    # NEED TO EXPORT CABAL TO PATH
+    export PATH="~/.cabal/bin/:$PATH"
     # Build/Compile project
     make
     # Execute application
