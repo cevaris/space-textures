@@ -252,9 +252,14 @@ draw state = do
   
   --drawStar 0.5 (0, 1.5, 0)
 
-  --drawStarCluster state (5, 1, 3)
-  --drawStarCluster state (5, 5, 1)
-  --drawStarCluster state (1, 5, 5)
+  drawStarCluster state (2, 1, 3)
+  drawStarCluster state (2, 2, 1)
+  drawStarCluster state (1, 2, 2)
+
+  drawStarCluster state (1, 1, 3)
+  drawStarCluster state (1, 1, 1)
+  drawStarCluster state (1, 1, 1)
+
 
   --drawStation 0.0 0.5 (1,0,0) (0,1,0)
 
