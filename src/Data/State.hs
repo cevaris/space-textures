@@ -94,7 +94,7 @@ makeTextures = do
   alien' <- loadGLTextureFromFile "resources/textures/deathstar.png"
   star'  <- loadGLTextureFromFile "resources/textures/star.jpg"
   metal1' <- loadGLTextureFromFile "resources/textures/metal1.jpg"
-  metal2' <- loadGLTextureFromFile "resources/textures/metal1.jpg"
+  metal2' <- loadGLTextureFromFile "resources/textures/metal2.jpg"
 
   return $ Textures {
     steel = steel',

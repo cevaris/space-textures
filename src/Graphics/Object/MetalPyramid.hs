@@ -36,6 +36,7 @@ drawMetalPyramid state object@(ObjectAttributes rotation scaleSize paint locatio
           z2 = x0*y1-x1*y0
           tex = textures state
           metal1' = metal1 tex
+          metal2' = metal2 tex
 
       mat <- newMatrix RowMajor $ listf [x0, x1,  x2, 0,
                                          y0, y1,  y2, 0,
@@ -74,30 +75,47 @@ drawMetalPyramid state object@(ObjectAttributes rotation scaleSize paint locatio
        
             -- Right
             drawNormal3f 0.5 0.5 0
+            drawTexCoord2f 0 1
             drawVertex3f 0 1 0
+            drawTexCoord2f 1 0
             drawVertex3f 1 (-1) 1
+            drawTexCoord2f 1.5 1
             drawVertex3f 1 (-1) (-1)
        
             -- Back
             drawNormal3f 0 0.5 (-0.5)
+            drawTexCoord2f 1 0
             drawVertex3f 0 1 0
+            drawTexCoord2f 1 0
             drawVertex3f 1 (-1) (-1)
+            drawTexCoord2f 1.5 1
             drawVertex3f (-1) (-1) (-1)
        
             -- Left
             drawNormal3f (-0.5) 0.5 0
+            drawTexCoord2f 0 1
             drawVertex3f  0 1 0
+            drawTexCoord2f 1 0
             drawVertex3f (-1)(-1)(-1)
+            drawTexCoord2f 1.5 1
             drawVertex3f (-1) (-1) 1
 
-          renderPrimitive Quads $ do
+          
+          -- Bottom
+          texture Texture2D $= Enabled
+          textureBinding Texture2D $= Just metal2'
+          textureFilter Texture2D $= ((Nearest, Nothing), Nearest)
+          textureFunction $= Modulate
 
-            color3f 0 0 1
-            
+          renderPrimitive Quads $ do
             drawNormal3f 0 (-0.5) 0
+            drawTexCoord2f 0 0
             drawVertex3f 1 (-1) 1
+            drawTexCoord2f 1 0
             drawVertex3f 1 (-1) (-1)
+            drawTexCoord2f 1 1
             drawVertex3f (-1) (-1) (-1)
+            drawTexCoord2f 0 1
             drawVertex3f (-1) (-1) 1
 
             
