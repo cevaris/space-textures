@@ -13,16 +13,14 @@ ifeq (${UNAME_S}, Linux)
 ifeq ($$(which cabal),"")
     echo cabal does not exist. Install it with \'sudo apt-get install cabal-install\'; exit 1;
 endif
-ifeq ($$(dpkg -s libghc-zlib-dev),1)
-    echo libghc-zlib-dev is not installed. Install it with \'sudo apt-get install libghc-zlib-dev\'; exit 1;
-endif
-ifeq ($$(dpkg -s libghc-zlib-bindings-dev),1)
-    echo libghc-zlib-bindings-dev is not installed. Install it with \'sudo apt-get install libghc-zlib-bindings-dev\'; exit 1;
 endif
 
-endif
+
 configure:
-	sudo apt-get install libghc-zlib-dev  libghc-zlib-bindings-dev
+ifeq (${UNAME_S}, Linux)
+    sudo apt-get install libghc-zlib-dev  libghc-zlib-bindings-dev
+endif
+	
 	cabal update
 	cabal install cabal
 	
