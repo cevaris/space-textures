@@ -5,8 +5,6 @@ A Haskell OpenGL/GLUT implementation Space 3D Scene with textures
 
 
 ## Installation
-    # NEED TO EXPORT CABAL TO PATH
-    export PATH="~/.cabal/bin/:$PATH"
     # Build/Compile project
     make
     # Execute application
@@ -38,7 +36,7 @@ A Haskell OpenGL/GLUT implementation Space 3D Scene with textures
 ## Assignment Length
 ~15 hours
 
-## Sample
+## Sample Video
 ![Output sample](https://s3.amazonaws.com/miscs.random/space-lightin.gif)
 
     
