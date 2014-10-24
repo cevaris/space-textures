@@ -18,13 +18,13 @@ endif
 
 configure:
 ifeq (${UNAME_S}, Linux)
-    sudo apt-get install libghc-zlib-dev  libghc-zlib-bindings-dev
+	sudo apt-get install libghc-zlib-dev  libghc-zlib-bindings-dev
 endif
 	
 	cabal update
 	cabal install cabal
 	
-	cabal install --only-dependencies
+	export PATH=~/.cabal/bin:$$PATH; cabal install --only-dependencies
 	cabal configure
 clean: test
 	cabal clean
